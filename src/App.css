@@ -1,0 +1,107 @@
+/* src/App.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar for Webkit browsers (Chrome, Safari) */
+/* Hide scrollbar by default for a cleaner look, often used for fixed headers/footers */
+/* But here we define a nice, subtle one for general use */
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f2f6; /* Light gray/off-white, matching Facebook's background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccd0d5; /* Medium gray */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aab0b8; /* Darker gray on hover */
+}
+
+/* Base styles for the entire app */
+body {
+  @apply bg-[#f0f2f5] text-[#1c1e21] font-sans;
+  /* Facebook's primary background color and default text color */
+}
+
+/* Utility to hide the scrollbar without removing functionality (e.g., for specific containers) */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+/* --- Custom Components & Utility Classes --- */
+
+/* Input Field Styling (Common across Login/Signup/Posts) */
+.facebook-input {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-3 text-base focus:outline-none focus:border-blue-500 transition duration-150;
+}
+
+.facebook-btn-primary {
+  @apply w-full bg-blue-500 text-white font-bold py-3 rounded-lg hover:bg-blue-600 transition duration-150 shadow-md;
+}
+
+.facebook-btn-secondary {
+  @apply bg-green-500 text-white font-bold px-4 py-3 rounded-lg hover:bg-green-600 transition duration-150 shadow-md;
+}
+
+.card-shadow {
+  @apply shadow-lg bg-white rounded-lg;
+}
+
+
+/* --- Animation Utilities (Framer Motion often handles this, but Tailwind assists) --- */
+
+.transition-fast {
+  @apply transition duration-150 ease-in-out;
+}
+
+/* --- Fixed Header/Sidebar Specific Styles --- */
+
+.header-shadow {
+  @apply shadow-md sticky top-0 z-50;
+}
+
+/* Ensuring layout containers stretch correctly */
+#root, .App {
+  min-height: 100vh;
+}
+
+/* Custom Text Styles based on Facebook's Typography */
+.text-facebook-title {
+  @apply text-3xl font-bold text-[#1c1e21];
+}
+
+.text-facebook-subtitle {
+  @apply text-lg text-[#606770];
+}
+
+/* Style for hoverable interactive elements (like post options or navigation links) */
+.hover-bg-gray {
+  @apply hover:bg-gray-100 rounded-lg transition-colors duration-150;
+}
+
+/* Hide focus rings for buttons that have clear background/hover states, improving aesthetics
+   This is often done selectively, but here we set a general rule for better look */
+button:focus:not(.skip-focus) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Apply smooth scrolling for internal navigation */
+html {
+  scroll-behavior: smooth;
+}
